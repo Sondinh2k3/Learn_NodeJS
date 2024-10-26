@@ -108,4 +108,77 @@ c. Lưu ý khi học Database (với beginer):
 - Lý do: Bản chất của ORM/ODM là giúp code ngắn đi cho dev, tuy nhiên nó vẫn “convert” ra raw query (vì database chỉ có thể hiểu raw query, không thể hiểu các cú pháp ORM/ODM)
 - Thành ra, trong trường hợp ORM/ODM bị lỗi, chúng ta cần check câu lệnh "raw query" nó tạo ra để biết được lỗi đang ở đâu
 
-==============================================================================================================================
+### LESSON BỔ TRỢ: CÁC THÀNH PHẦN CỦA URL
+
+URL (Uniform Resource Locator): Hiểu đơn giản là một đường link để truy cập tới một website
+
+- Cấu trúc của URL: scheme://host:post/path?query
+
+_Example:_
+
+<img src="./img/url_example.png">
+
+Trong đó:
+
+> - scheme: định nghĩa protocol để truy cập nguồn tài nguyên trên Internet, bao gồm HTTP (không có SSL), và HTTPs (có SSL)
+
+SSL (Secure Sockets Layer): Giúp Website an toàn hơn
+
+=> Scheme = http
+
+> - host: nơi chứa (lưu trữ) server, có thể gọi là domain name.
+> - host = www.example.com
+
+> - **hostname có thể chứa Port number:**
+> - Tại server, 1 server có thể sử dụng nhiều "process" tại một thời điểm. Để "định danh" 1 process, _Port_ được sử dụng
+> - Port number (16 bit): có thể lên tới 65535
+
+Khi client truy cập vào 1 hostname (URL của Server), server sẽ 'tự động' sử dụng PORT hay dùng (well - known) để khởi tạo
+
+Ví dụ: port hay dùng (mặc định)
+
+- FTP (File Transfer Protocol): 21
+- Telnet: 23
+- HTTP: 80
+- HTTPS: 443
+
+=> Khi truy cập vào http://www.example.com thực chất là đang truy cập vào:
+
+- http://www.example.com:80
+
+=> Với dev, dùng PORT có thể chạy nhiều project cùng lúc tại Local
+
+vì: http://localhost = http://localhost:80
+
+> - path: nguồn tài nguyên ở host mà local muốn truy cập
+
+> - query string: nếu được sử dụng, thì nó sẽ cung cấp các thông tin mà client truyền lên Server
+
+### LESSON 2: WEBSERVER VỚI NODEJS
+
+**1. What is Webserver:**
+
+a. Webserver:
+
+- Để viết (tạo ra) một Web Server, chúng ta cần ‘sử dụng’ các ngôn ngữ Backend, có thể kể tới như: Java, PHP, Python, Ruby, … và JavaScript.
+- Chúng ta không thể sử dụng các công cụ ở Front End như: HTML, CSS … để tạo nên Server, tuy nhiên JavaScript là một ngoại lệ.
+- JavaScript có thể chạy được ở FrontEnd, hoặc thậm chí được dung để viết Server Backend.
+- NodeJS chính là công cụ (môi trường) giúp chúng ta có thể thực thi code JavaScript trên Server.
+- NodeJS là platform (môi trường), không phải library (thư viện) hay framework
+- Khi nói về học Backend với NodeJS, hàm ý là chúng ta sử dụng JavaScript cho Backend, và học cách sử dụng các thư viện, framework viết backend với JS
+
+**2. NPM - Node Package Manager**
+
+NPM chính là công cụ quản lý các thư viện của Nodejs
+
+_Tại sao lại dùng NPM:_
+
+- NPM là công cụ giúp chúng ta quản lý các thư viện được xây dựng sẵn cho NODEJS, bao gồm miễn phí và trả phí
+- Nó chính là nơi lưu trữ các "thư viện" mà lập trình viên chúng ta chỉ kéo về và dùng thôi.
+- Ngoài ra, NPM cung cấp giao diện dòng lệnh (CLI) để chúng ta có thể cài đặt các thư viện cần thiết một cách dễ dàng
+
+**3. Viết chương trình đầu tiên với Nodejs**
+
+- Trước đây khi học JS, ta đã biết cách nhúng code JS vào file HTML
+- Tuy nhiên, cách chạy code đó chỉ là cách code phía client chứ ko phải phía server backend
+- Để code của chúng ta chạy phía backend, thì ta mở Terminal lên, và gõ code theo lệnh: node **_file_name.js_**
